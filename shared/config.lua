@@ -16,7 +16,31 @@ return {
         style = 'cd_dispatch', -- supported: 'cd_dispatch' or 'ps-dispatch'
     },
 
-    Menu = 'ox', -- supported: 'qb', 'ox', or 'lation'
+    Menu = 'ox',   -- supported: 'qb', 'ox', or 'lation'
+
+    PoliceJobs = { -- Which Police Jobs Will Receive The Notifications or Dispatch Alerts
+        'police',
+        'lscso',
+        'sast',
+        'bcso',
+        'sasp',
+        -- add your server's police job here as found in qb-core/shared/jobs.lua or qbx_core/shared/jobs.lua
+    },
+
+    AmbulanceJobs = { -- Which EMS Jobs Will Receive The Notifications or Dispatch Alerts
+        'ambulance',
+        -- add your server's ambulance job here as found in qb-core/shared/jobs.lua or qbx_core/shared/jobs.lua
+    },
+
+    MechanicJobs = { -- Which Mechanic Jobs Will Receive Notifications
+        'mechanic',
+        'mechanic2',
+        'mechanic3',
+        'beeker',
+        'bennys',
+        'cruisin',
+        -- add your server's mechanic job here as found in qb-core/shared/jobs.lua or qbx_core/shared/jobs.lua
+    },
 
     PoliceLocations = {
         [1] = {
@@ -32,7 +56,9 @@ return {
         [3] = {
             name = 'San Anderas State Police',
             coords = '',
-        }
+        },
+
+        -- Add Other Department Locations
     },
 
     AmbulanceLocations = {
@@ -49,7 +75,9 @@ return {
         [3] = {
             name = 'Sandy Shores Clinic',
             coords = '',
-        }
+        },
+
+        -- Add Other Hospital Locations
     },
 
     MechanicLocations = {
@@ -57,5 +85,7 @@ return {
             name = 'Cruisin\' Craftsmen',
             coords = '',
         },
+
+        -- Add Other Mechanic Locations
     },
 }
