@@ -6,9 +6,10 @@ return {
     Target = 'ox',     -- supported: 'qb' or 'ox'
 
     Notify = {
-        enabled = true,   -- True To Enable Notifications, False To Disable
-        style = 'ox',     --  supported: 'qb', 'ox', or 'lation'
-        duration = 10000, -- Configurable Notification Duration Length
+        enabled = true,    -- True To Enable Notifications, False To Disable
+        style = 'ox',      --  supported: 'qb', 'ox', or 'lation'
+        duration = 10000,  -- Configurable Notification Duration Length
+        disabledJobs = {}, -- Dispatch.enabled Must Be True In Order For These Jobs To Not Get Both Notifications and Dispatch Alerts
     },
 
     Dispatch = {
