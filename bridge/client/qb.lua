@@ -6,12 +6,12 @@ local Config = require 'shared.config'
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
-function isPlayerPolice()
+function qbIsPlayerPolice()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end
     local currentJob = PlayerData.job
     if not currentJob then return false end
-    for _, job in pairs(Config.PoliceJobs) do
+    for _, job in ipairs(Config.PoliceJobs) do
         if (currentJob.name == job) then
             return true
         end
@@ -19,12 +19,12 @@ function isPlayerPolice()
     return false
 end
 
-function isPlayerAmbulance()
+function qbIsPlayerAmbulance()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end
     local currentJob = PlayerData.job
     if not currentJob then return false end
-    for _, job in pairs(Config.AmbulanceJobs) do
+    for _, job in ipairs(Config.AmbulanceJobs) do
         if (currentJob.name == job) then
             return true
         end
@@ -32,12 +32,12 @@ function isPlayerAmbulance()
     return false
 end
 
-function isPlayerMechanic()
+function qbIsPlayerMechanic()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end
     local currentJob = PlayerData.job
     if not currentJob then return false end
-    for _, job in pairs(Config.MechanicJobs) do
+    for _, job in ipairs(Config.MechanicJobs) do
         if (currentJob.name == job) then
             return true
         end
@@ -45,7 +45,7 @@ function isPlayerMechanic()
     return false
 end
 
-function isPlayerOnDuty()
+function qbIsPlayerOnDuty()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end
     local currentJob = PlayerData.job
