@@ -17,6 +17,12 @@ return {
         style = 'cd_dispatch', -- supported: 'cd_dispatch' or 'ps-dispatch'
     },
 
+    Progress = {
+        enabled = true,
+        style = 'ox_circle', -- supported: 'qb', 'ox_bar', 'ox_circle', or 'lation'
+        duration = 1500
+    },
+
     Menu = 'ox',   -- supported: 'qb', 'ox', or 'lation'
 
     PoliceJobs = { -- Which Police Jobs Will Receive The Notifications or Dispatch Alerts

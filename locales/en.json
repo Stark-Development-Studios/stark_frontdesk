@@ -1,5 +1,12 @@
 {
     "info": {
-        "target_label": "Ring The Bell"
+        "target_label": "Ring The Bell",
+        "progress_name": "ring_the_bell",
+        "progress_label": "Ringing The Bell..."
+    },
+
+    "error": {
+        "progress_cancelled_title": "Front Desk",
+        "progress_cancelled_description": "You Stopped Ringing The Bell!"
     }
 }

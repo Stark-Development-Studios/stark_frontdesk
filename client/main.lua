@@ -1,7 +1,62 @@
+if not lib.checkDependency('ox_lib', '3.32.0', true) then return end
+
 local Config = require 'shared.config'
 
 if Config.Framework == 'qb' then
+    local QBCore = exports['qb-core']:GetCoreObject()
+
     -- Functions
+    local function frontDeskProgress()
+        if Config.Progress.enabled then
+            if Config.Progress.style == 'qb' then
+                QBCore.Functions.Progressbar(locale('info.progress_name'), locale('info.progress_label'),
+                    Config.Progress.duration, false, true,
+                    {
+                        disableMovement = true,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true
+                    }, {}, {}, {}, function() -- Completed
+                        -- Prompt Alert
+                        -- Open Menu
+                    end, function() -- Cancelled
+                        QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
+                    end)
+            elseif Config.Progress.style == 'ox_bar' then
+                if lib.progressBar({
+                        duration = Config.Progress.duration,
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    -- Prompt Alert
+                    -- Open Menu
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
+            elseif Config.Progress.style == 'ox_circle' then
+            elseif Config.Progress.style == 'lation' then
+            end
+        else
+            -- Prompt Alert
+            -- Open Menu
+        end
+    end
+
+    frontDeskProgress() -- DEBUG
+
     local function createPoliceZones()
         if Config.Target == 'qb' then
             if GetResourceState('qb-target') == 'started' then
