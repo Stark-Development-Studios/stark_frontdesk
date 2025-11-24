@@ -56,9 +56,17 @@ end
 
 -- Events
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    -- createZone()
+    TriggerEvent('stark_frontdesk:client:createPoliceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:createAmbulanceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:createMechanicZones')
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
-    -- removeZone()
+    TriggerEvent('stark_frontdesk:client:removePoliceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:removeAmbulanceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:removeMechanicZones')
 end)
