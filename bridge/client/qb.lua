@@ -6,6 +6,7 @@ local Config = require 'shared.config'
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
+-- Functions
 function qbIsPlayerPolice()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end
@@ -52,3 +53,12 @@ function qbIsPlayerOnDuty()
     if not currentJob then return false end
     return currentJob.onduty
 end
+
+-- Events
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    -- createZone()
+end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+    -- removeZone()
+end)
