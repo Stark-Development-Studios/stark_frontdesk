@@ -46,17 +46,17 @@ return {
     PoliceLocations = {
         [1] = {
             name = 'Mission Row Police Department',
-            coords = '',
+            coords = vector3(445.07, -980.67, 30.71),
         },
 
         [2] = {
             name = 'Los Santos County Sheriff\'s Office',
-            coords = '',
+            coords = vector3(1818.41, 3670.64, 34.71),
         },
 
         [3] = {
             name = 'San Anderas State Police',
-            coords = '',
+            coords = vector3(-584.15, -417.18, 35.18),
         },
 
         -- Add Other Department Locations
@@ -65,17 +65,17 @@ return {
     AmbulanceLocations = {
         [1] = {
             name = 'Pillbox Hill Medical Center',
-            coords = '',
+            coords = vector3(311.76, -581.04, 43.27),
         },
 
         [2] = {
             name = 'Mount Zonah Medical Center',
-            coords = '',
+            coords = vector3(-434.01, -326.45, 34.91),
         },
 
         [3] = {
             name = 'Sandy Shores Clinic',
-            coords = '',
+            coords = vector3(1672.25, 3665.42, 35.34),
         },
 
         -- Add Other Hospital Locations
@@ -84,7 +84,7 @@ return {
     MechanicLocations = {
         [1] = {
             name = 'Cruisin\' Craftsmen',
-            coords = '',
+            coords = vector3(-327.5, -1335.91, 31.45),
         },
 
         -- Add Other Mechanic Locations
