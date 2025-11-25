@@ -7,6 +7,11 @@ local Config = require 'shared.config'
 local QBX = exports.qbx_core
 
 -- Functions
+function qbxGetPlayerName()
+    local PlayerData = QBX:GetPlayerData()
+    return PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname
+end
+
 function qbxIsPlayerPolice()
     local PlayerData = QBX:GetPlayerData()
     if not PlayerData then return false end

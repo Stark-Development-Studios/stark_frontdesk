@@ -2,7 +2,10 @@
     "info": {
         "target_label": "Ring The Bell",
         "progress_name": "ring_the_bell",
-        "progress_label": "Ringing The Bell..."
+        "progress_label": "Ringing The Bell...",
+        "alert_dialog_header": "Receptionist",
+        "alert_dialog_description": "Hello, %s! How Can We Help You?",
+        "alert_dialog_confirm_label": "Go To Menu"
     },
 
     "error": {

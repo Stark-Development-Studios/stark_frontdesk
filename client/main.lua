@@ -18,6 +18,18 @@ if Config.Framework == 'qb' then
                         disableCombat = true
                     }, {}, {}, {}, function() -- Completed
                         -- Prompt Alert
+                        local playerName = qbGetPlayerName()
+                        local alert = lib.alertDialog({
+                            header = locale('info.alert_dialog_header'),
+                            content = locale('info.alert_dialog_description'):format(playerName),
+                            centered = true,
+                            cancel = true,
+                            size = 'sm',
+                            labels = {
+                                confirm = locale('info.alert_dialog_confirm_label'),
+                            }
+                        })
+                        if alert == 'confirm' then else end -- Confirm = open menu, Cancel = Notifies Player
                         -- Open Menu
                     end, function() -- Cancelled
                         QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)

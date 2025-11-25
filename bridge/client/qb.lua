@@ -7,7 +7,7 @@ local Config = require 'shared.config'
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Functions
-function getPlayerName()
+function qbGetPlayerName()
     local PlayerData = QBCore.Functions.GetPlayerData()
     return PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname
 end
