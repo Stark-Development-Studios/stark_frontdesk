@@ -7,6 +7,11 @@ local Config = require 'shared.config'
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Functions
+function getPlayerName()
+    local PlayerData = QBCore.Functions.GetPlayerData()
+    return PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname
+end
+
 function qbIsPlayerPolice()
     local PlayerData = QBCore.Functions.GetPlayerData()
     if not PlayerData then return false end

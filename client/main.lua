@@ -47,7 +47,60 @@ if Config.Framework == 'qb' then
                     })
                 end
             elseif Config.Progress.style == 'ox_circle' then
+                if lib.progressCircle({
+                        duration = Config.Progress.duration,
+                        position = 'bottom',
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            mouse = false,
+                            combat = true
+                        }
+                    }) then
+                    -- Prompt Alert
+                    -- Open Menu
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
             elseif Config.Progress.style == 'lation' then
+                local lation_ui = exports.lation_ui
+                if lation_ui:progressBar({
+                        label = locale('info.progress_label'),
+                        duration = Config.Progress.duration,
+                        icon = 'fa-solid fa-bell-concierge',
+                        iconColor = '#FFFFFF',
+                        color = '#FF0000',
+                        -- steps = {}, -- FEATURE COMING SOON
+                        canCancel = true,
+                        useWhileDead = false,
+                        disable = {
+                            move = true,
+                            sprint = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    -- Prompt Alert
+                    -- Open Menu
+                else
+                    lation_ui:notify({
+                        title = locale('error.progress_cancelled_title'),
+                        message = locale('error.progress_cancelled_description'),
+                        type = 'error',
+                        duration = '5000',
+                        position = 'center-right'
+                    })
+                end
             end
         else
             -- Prompt Alert
