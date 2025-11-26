@@ -23,7 +23,7 @@ if Config.Framework == 'qb' then
                             content = locale('info.alert_dialog_description'):format(playerName),
                             centered = true,
                             cancel = true,
-                            size = 'sm',
+                            size = 'md',
                             labels = {
                                 confirm = locale('info.alert_dialog_confirm_label'),
                             }
@@ -55,7 +55,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -100,7 +100,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -153,8 +153,8 @@ if Config.Framework == 'qb' then
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         },
-                        type = 'info',
-                        size = 'sm',
+                        type = 'success',
+                        size = 'md',
                         cancel = true
                     })
                     if alert == 'confirm' then
@@ -185,7 +185,7 @@ if Config.Framework == 'qb' then
                 content = locale('info.alert_dialog_description'):format(playerName),
                 centered = true,
                 cancel = true,
-                size = 'sm',
+                size = 'md',
                 labels = {
                     confirm = locale('info.alert_dialog_confirm_label'),
                 }
@@ -221,7 +221,7 @@ if Config.Framework == 'qb' then
                             content = locale('info.alert_dialog_description'):format(playerName),
                             centered = true,
                             cancel = true,
-                            size = 'sm',
+                            size = 'md',
                             labels = {
                                 confirm = locale('info.alert_dialog_confirm_label'),
                             }
@@ -253,7 +253,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -298,7 +298,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -351,8 +351,8 @@ if Config.Framework == 'qb' then
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         },
-                        type = 'info',
-                        size = 'sm',
+                        type = 'success',
+                        size = 'md',
                         cancel = true
                     })
                     if alert == 'confirm' then
@@ -383,7 +383,7 @@ if Config.Framework == 'qb' then
                 content = locale('info.alert_dialog_description'):format(playerName),
                 centered = true,
                 cancel = true,
-                size = 'sm',
+                size = 'md',
                 labels = {
                     confirm = locale('info.alert_dialog_confirm_label'),
                 }
@@ -419,7 +419,7 @@ if Config.Framework == 'qb' then
                             content = locale('info.alert_dialog_description'):format(playerName),
                             centered = true,
                             cancel = true,
-                            size = 'sm',
+                            size = 'md',
                             labels = {
                                 confirm = locale('info.alert_dialog_confirm_label'),
                             }
@@ -451,7 +451,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -496,7 +496,7 @@ if Config.Framework == 'qb' then
                         content = locale('info.alert_dialog_description'):format(playerName),
                         centered = true,
                         cancel = true,
-                        size = 'sm',
+                        size = 'md',
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         }
@@ -549,8 +549,8 @@ if Config.Framework == 'qb' then
                         labels = {
                             confirm = locale('info.alert_dialog_confirm_label'),
                         },
-                        type = 'info',
-                        size = 'sm',
+                        type = 'success',
+                        size = 'md',
                         cancel = true
                     })
                     if alert == 'confirm' then
@@ -581,7 +581,7 @@ if Config.Framework == 'qb' then
                 content = locale('info.alert_dialog_description'):format(playerName),
                 centered = true,
                 cancel = true,
-                size = 'sm',
+                size = 'md',
                 labels = {
                     confirm = locale('info.alert_dialog_confirm_label'),
                 }
@@ -604,7 +604,7 @@ if Config.Framework == 'qb' then
         if Config.Target == 'qb' then
             if GetResourceState('qb-target') == 'started' then
                 for _, i in pairs(Config.PoliceLocations) do
-                    exports['qb-target']:AddCircleZone(i.name, i.coords, 2.0, {
+                    exports['qb-target']:AddCircleZone(i.name, i.coords, 1.5, {
                         name = i.name,
                         debugPoly = false,
                         useZ = true
@@ -628,7 +628,7 @@ if Config.Framework == 'qb' then
                     ox_target:addSphereZone({
                         coords = i.coords,
                         name = i.name,
-                        radius = 2.0,
+                        radius = 1.5,
                         debug = true,
                         drawSprite = true,
                         options = {
@@ -647,7 +647,7 @@ if Config.Framework == 'qb' then
         if Config.Target == 'qb' then
             if GetResourceState('qb-target') == 'started' then
                 for _, i in pairs(Config.AmbulanceLocations) do
-                    exports['qb-target']:AddCircleZone(i.name, i.coords, 2.0, {
+                    exports['qb-target']:AddCircleZone(i.name, i.coords, 1.5, {
                         name = i.name,
                         debugPoly = false,
                         useZ = true
@@ -671,7 +671,7 @@ if Config.Framework == 'qb' then
                     ox_target:addSphereZone({
                         coords = i.coords,
                         name = i.name,
-                        radius = 2.0,
+                        radius = 1.5,
                         debug = true,
                         drawSprite = true,
                         options = {
@@ -690,7 +690,7 @@ if Config.Framework == 'qb' then
         if Config.Target == 'qb' then
             if GetResourceState('qb-target') == 'started' then
                 for _, i in pairs(Config.MechanicLocations) do
-                    exports['qb-target']:AddCircleZone(i.name, i.coords, 2.0, {
+                    exports['qb-target']:AddCircleZone(i.name, i.coords, 1.5, {
                         name = i.name,
                         debugPoly = false,
                         useZ = true
@@ -714,7 +714,7 @@ if Config.Framework == 'qb' then
                     ox_target:addSphereZone({
                         coords = i.coords,
                         name = i.name,
-                        radius = 2.0,
+                        radius = 1.5,
                         debug = true,
                         drawSprite = true,
                         options = {
@@ -782,47 +782,47 @@ if Config.Framework == 'qb' then
 
     -- Events
     RegisterNetEvent('stark_frontdesk:client:createPoliceZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         createPoliceZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:removePoliceZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         removePoliceZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:createAmbulanceZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         createAmbulanceZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:removeAmbulanceZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         removeAmbulanceZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:createMechanicZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         createMechanicZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:removeMechanicZones', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         removeMechanicZones()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:policeProgress', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         policeFrontDeskProgress()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:ambulanceProgress', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         ambulanceFrontDeskProgress()
     end)
 
     RegisterNetEvent('stark_frontdesk:client:mechanicProgress', function()
-        if GetInvokingResource() then return end
+        if not GetInvokingResource() then return end
         mechanicFrontDeskProgress()
     end)
 
