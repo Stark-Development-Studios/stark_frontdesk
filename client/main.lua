@@ -6,7 +6,403 @@ if Config.Framework == 'qb' then
     local QBCore = exports['qb-core']:GetCoreObject()
 
     -- Functions
-    local function frontDeskProgress()
+    local function policeFrontDeskProgress()
+        if Config.Progress.enabled then
+            if Config.Progress.style == 'qb' then
+                QBCore.Functions.Progressbar(locale('info.progress_name'), locale('info.progress_label'),
+                    Config.Progress.duration, false, true,
+                    {
+                        disableMovement = true,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true
+                    }, {}, {}, {}, function() -- Progress Completed
+                        local playerName = qbGetPlayerName()
+                        local alert = lib.alertDialog({
+                            header = locale('info.alert_dialog_header'),
+                            content = locale('info.alert_dialog_description'):format(playerName),
+                            centered = true,
+                            cancel = true,
+                            size = 'sm',
+                            labels = {
+                                confirm = locale('info.alert_dialog_confirm_label'),
+                            }
+                        })
+                        if alert == 'confirm' then
+                            -- Open Menu
+                        else
+                            QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
+                        end
+                    end, function() -- Progress Cancelled
+                        QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
+                    end)
+            elseif Config.Progress.style == 'ox_bar' then
+                if lib.progressBar({
+                        duration = Config.Progress.duration,
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
+            elseif Config.Progress.style == 'ox_circle' then
+                if lib.progressCircle({
+                        duration = Config.Progress.duration,
+                        position = 'bottom',
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            mouse = false,
+                            combat = true
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
+            elseif Config.Progress.style == 'lation' then
+                local lation_ui = exports.lation_ui
+                if lation_ui:progressBar({
+                        label = locale('info.progress_label'),
+                        duration = Config.Progress.duration,
+                        icon = 'fa-solid fa-bell-concierge',
+                        iconColor = '#FFFFFF',
+                        color = '#FF0000',
+                        -- steps = {}, -- FEATURE COMING SOON
+                        canCancel = true,
+                        useWhileDead = false,
+                        disable = {
+                            move = true,
+                            sprint = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lation_ui:alert({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        icon = 'fa-solid fa-user-shield',
+                        iconColor = '#FFFFFF',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        },
+                        type = 'info',
+                        size = 'sm',
+                        cancel = true
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lation_ui:notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            message = locale('error.alert_dialog_cancelled_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
+                    end
+                else
+                    lation_ui:notify({
+                        title = locale('error.progress_cancelled_title'),
+                        message = locale('error.progress_cancelled_description'),
+                        type = 'error',
+                        duration = 5000,
+                        position = 'center-right'
+                    })
+                end
+            end
+        else
+            local playerName = qbGetPlayerName()
+            local alert = lib.alertDialog({
+                header = locale('info.alert_dialog_header'),
+                content = locale('info.alert_dialog_description'):format(playerName),
+                centered = true,
+                cancel = true,
+                size = 'sm',
+                labels = {
+                    confirm = locale('info.alert_dialog_confirm_label'),
+                }
+            })
+            if alert == 'confirm' then
+                -- Open Menu
+            else
+                lib.notify({
+                    title = locale('error.alert_dialog_cancelled_title'),
+                    description = locale('error.alert_dialog_cancelled_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+            end
+        end
+    end
+
+    local function ambulanceFrontDeskProgress()
+        if Config.Progress.enabled then
+            if Config.Progress.style == 'qb' then
+                QBCore.Functions.Progressbar(locale('info.progress_name'), locale('info.progress_label'),
+                    Config.Progress.duration, false, true,
+                    {
+                        disableMovement = true,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true
+                    }, {}, {}, {}, function() -- Progress Completed
+                        local playerName = qbGetPlayerName()
+                        local alert = lib.alertDialog({
+                            header = locale('info.alert_dialog_header'),
+                            content = locale('info.alert_dialog_description'):format(playerName),
+                            centered = true,
+                            cancel = true,
+                            size = 'sm',
+                            labels = {
+                                confirm = locale('info.alert_dialog_confirm_label'),
+                            }
+                        })
+                        if alert == 'confirm' then
+                            -- Open Menu
+                        else
+                            QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
+                        end
+                    end, function() -- Progress Cancelled
+                        QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
+                    end)
+            elseif Config.Progress.style == 'ox_bar' then
+                if lib.progressBar({
+                        duration = Config.Progress.duration,
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
+            elseif Config.Progress.style == 'ox_circle' then
+                if lib.progressCircle({
+                        duration = Config.Progress.duration,
+                        position = 'bottom',
+                        label = locale('info.progress_label'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            mouse = false,
+                            combat = true
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
+                else
+                    lib.notify({
+                        title = locale('error.progress_cancelled_title'),
+                        description = locale('error.progress_cancelled_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end
+            elseif Config.Progress.style == 'lation' then
+                local lation_ui = exports.lation_ui
+                if lation_ui:progressBar({
+                        label = locale('info.progress_label'),
+                        duration = Config.Progress.duration,
+                        icon = 'fa-solid fa-bell-concierge',
+                        iconColor = '#FFFFFF',
+                        color = '#FF0000',
+                        -- steps = {}, -- FEATURE COMING SOON
+                        canCancel = true,
+                        useWhileDead = false,
+                        disable = {
+                            move = true,
+                            sprint = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        }
+                    }) then
+                    local playerName = qbGetPlayerName()
+                    local alert = lation_ui:alert({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        icon = 'fa-solid fa-user-shield',
+                        iconColor = '#FFFFFF',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        },
+                        type = 'info',
+                        size = 'sm',
+                        cancel = true
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lation_ui:notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            message = locale('error.alert_dialog_cancelled_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
+                    end
+                else
+                    lation_ui:notify({
+                        title = locale('error.progress_cancelled_title'),
+                        message = locale('error.progress_cancelled_description'),
+                        type = 'error',
+                        duration = 5000,
+                        position = 'center-right'
+                    })
+                end
+            end
+        else
+            local playerName = qbGetPlayerName()
+            local alert = lib.alertDialog({
+                header = locale('info.alert_dialog_header'),
+                content = locale('info.alert_dialog_description'):format(playerName),
+                centered = true,
+                cancel = true,
+                size = 'sm',
+                labels = {
+                    confirm = locale('info.alert_dialog_confirm_label'),
+                }
+            })
+            if alert == 'confirm' then
+                -- Open Menu
+            else
+                lib.notify({
+                    title = locale('error.alert_dialog_cancelled_title'),
+                    description = locale('error.alert_dialog_cancelled_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+            end
+        end
+    end
+
+    local function mechanicFrontDeskProgress()
         if Config.Progress.enabled then
             if Config.Progress.style == 'qb' then
                 QBCore.Functions.Progressbar(locale('info.progress_name'), locale('info.progress_label'),
@@ -203,8 +599,6 @@ if Config.Framework == 'qb' then
             end
         end
     end
-
-    frontDeskProgress() -- DEBUG
 
     local function createPoliceZones()
         if Config.Target == 'qb' then
@@ -423,6 +817,20 @@ if Config.Framework == 'qb' then
         removeMechanicZones()
     end)
 
+    RegisterNetEvent('stark_frontdesk:client:policeProgress', function()
+        if GetInvokingResource() then return end
+        policeFrontDeskProgress()
+    end)
+
+    RegisterNetEvent('stark_frontdesk:client:ambulanceProgress', function()
+        if GetInvokingResource() then return end
+        ambulanceFrontDeskProgress()
+    end)
+
+    RegisterNetEvent('stark_frontdesk:client:mechanicProgress', function()
+        if GetInvokingResource() then return end
+        mechanicFrontDeskProgress()
+    end)
     -- Threads
 end
 
