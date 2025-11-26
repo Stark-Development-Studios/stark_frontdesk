@@ -611,11 +611,10 @@ if Config.Framework == 'qb' then
                     }, {
                         options = {
                             {
-                                type = "client", -- event type (client or server)
-                                event = "",      -- event name?
+                                type = "client",
+                                event = "stark_frontdesk:client:policeProgress",
                                 icon = 'fa-solid fa-bell-concierge',
                                 label = locale('info.target_label'),
-                                action = function() end, -- function call instead?
                             }
                         },
                         distance = 3.0
@@ -627,7 +626,7 @@ if Config.Framework == 'qb' then
                 local ox_target = exports.ox_target
                 for _, i in pairs(Config.PoliceLocations) do
                     ox_target:addSphereZone({
-                        coords = i.coords, -- Right Now, Coords is an empty string. Will Need To Define!
+                        coords = i.coords,
                         name = i.name,
                         radius = 2.0,
                         debug = true,
@@ -636,8 +635,7 @@ if Config.Framework == 'qb' then
                             label = locale('info.target_label'),
                             icon = 'fa-solid fa-bell-concierge',
                             distance = 3.0,
-                            onSelect = function() end, -- function call?
-                            event = ''                 -- client event?
+                            event = 'stark_frontdesk:client:policeProgress'
                         }
                     })
                 end
@@ -657,10 +655,9 @@ if Config.Framework == 'qb' then
                         options = {
                             {
                                 type = 'client',
-                                event = '',
+                                event = 'stark_frontdesk:client:ambulanceProgress',
                                 icon = 'fa-solid fa-bell-concierge',
                                 label = locale('info.target_label'),
-                                action = function() end,
                             }
                         },
                         distance = 3.0
@@ -681,8 +678,7 @@ if Config.Framework == 'qb' then
                             label = locale('info.target_label'),
                             icon = 'fa-solid fa-bell-concierge',
                             distance = 3.0,
-                            onSelect = function() end,
-                            event = ''
+                            event = 'stark_frontdesk:client:ambulanceProgress'
                         }
                     })
                 end
@@ -702,10 +698,9 @@ if Config.Framework == 'qb' then
                         options = {
                             {
                                 type = 'client',
-                                event = '',
+                                event = 'stark_frontdesk:client:mechanicProgress',
                                 icon = 'fa-solid fa-bell-concierge',
                                 label = locale('info.target_label'),
-                                action = function() end
                             }
                         },
                         distance = 3.0
@@ -726,8 +721,7 @@ if Config.Framework == 'qb' then
                             label = locale('info.target_label'),
                             icon = 'fa-solid fa-bell-concierge',
                             distance = 3.0,
-                            onSelect = function() end,
-                            event = ''
+                            event = 'stark_frontdesk:client:mechanicProgress'
                         }
                     })
                 end
@@ -831,6 +825,7 @@ if Config.Framework == 'qb' then
         if GetInvokingResource() then return end
         mechanicFrontDeskProgress()
     end)
+
     -- Threads
 end
 
