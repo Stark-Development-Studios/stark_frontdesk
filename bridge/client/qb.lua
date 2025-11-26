@@ -75,3 +75,13 @@ RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     Wait(1000)
     TriggerEvent('stark_frontdesk:client:removeMechanicZones')
 end)
+
+-- Event Handlers
+AddEventHandler('onResourceStart', function(resource)
+    if GetCurrentResourceName() ~= resource or not LocalPlayer.state.isLoggedIn then return end
+    TriggerEvent('stark_frontdesk:client:createPoliceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:createAmbulanceZones')
+    Wait(1000)
+    TriggerEvent('stark_frontdesk:client:createMechanicZones')
+end)

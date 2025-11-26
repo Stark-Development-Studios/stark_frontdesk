@@ -826,6 +826,17 @@ if Config.Framework == 'qb' then
         mechanicFrontDeskProgress()
     end)
 
+    -- Event Handlers
+    AddEventHandler('onResourceStop', function(resourceName)
+        if GetCurrentResourceName() == resourceName then
+            TriggerEvent('stark_frontdesk:client:removePoliceZones')
+            Wait(1000)
+            TriggerEvent('stark_frontdesk:client:removeAmbulanceZones')
+            Wait(1000)
+            TriggerEvent('stark_frontdesk:client:removeMechanicZones')
+        end
+    end)
+
     -- Threads
 end
 
