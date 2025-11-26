@@ -10,6 +10,8 @@
 
     "error": {
         "progress_cancelled_title": "Front Desk",
-        "progress_cancelled_description": "You Stopped Ringing The Bell!"
+        "progress_cancelled_description": "You Stopped Ringing The Bell!",
+        "alert_dialog_cancelled_title": "Receptionist",
+        "alert_dialog_cancelled_description": "Thank You For Stopping By!"
     }
 }

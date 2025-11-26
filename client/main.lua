@@ -16,8 +16,7 @@ if Config.Framework == 'qb' then
                         disableCarMovement = true,
                         disableMouse = false,
                         disableCombat = true
-                    }, {}, {}, {}, function() -- Completed
-                        -- Prompt Alert
+                    }, {}, {}, {}, function() -- Progress Completed
                         local playerName = qbGetPlayerName()
                         local alert = lib.alertDialog({
                             header = locale('info.alert_dialog_header'),
@@ -29,9 +28,12 @@ if Config.Framework == 'qb' then
                                 confirm = locale('info.alert_dialog_confirm_label'),
                             }
                         })
-                        if alert == 'confirm' then else end -- Confirm = open menu, Cancel = Notifies Player
-                        -- Open Menu
-                    end, function() -- Cancelled
+                        if alert == 'confirm' then
+                            -- Open Menu
+                        else
+                            QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
+                        end
+                    end, function() -- Progress Cancelled
                         QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
                     end)
             elseif Config.Progress.style == 'ox_bar' then
@@ -47,8 +49,28 @@ if Config.Framework == 'qb' then
                             mouse = false
                         }
                     }) then
-                    -- Prompt Alert
-                    -- Open Menu
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
                 else
                     lib.notify({
                         title = locale('error.progress_cancelled_title'),
@@ -72,8 +94,28 @@ if Config.Framework == 'qb' then
                             combat = true
                         }
                     }) then
-                    -- Prompt Alert
-                    -- Open Menu
+                    local playerName = qbGetPlayerName()
+                    local alert = lib.alertDialog({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        centered = true,
+                        cancel = true,
+                        size = 'sm',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        }
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lib.notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            description = locale('error.alert_dialog_cancelled_description'),
+                            duration = 5000,
+                            position = 'center-right',
+                            type = 'error'
+                        })
+                    end
                 else
                     lib.notify({
                         title = locale('error.progress_cancelled_title'),
@@ -102,21 +144,63 @@ if Config.Framework == 'qb' then
                             mouse = false
                         }
                     }) then
-                    -- Prompt Alert
-                    -- Open Menu
+                    local playerName = qbGetPlayerName()
+                    local alert = lation_ui:alert({
+                        header = locale('info.alert_dialog_header'),
+                        content = locale('info.alert_dialog_description'):format(playerName),
+                        icon = 'fa-solid fa-user',
+                        iconColor = '#FFFFFF',
+                        labels = {
+                            confirm = locale('info.alert_dialog_confirm_label'),
+                        },
+                        type = 'info',
+                        size = 'sm',
+                        cancel = true
+                    })
+                    if alert == 'confirm' then
+                        -- Open Menu
+                    else
+                        lation_ui:notify({
+                            title = locale('error.alert_dialog_cancelled_title'),
+                            message = locale('error.alert_dialog_cancelled_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
+                    end
                 else
                     lation_ui:notify({
                         title = locale('error.progress_cancelled_title'),
                         message = locale('error.progress_cancelled_description'),
                         type = 'error',
-                        duration = '5000',
+                        duration = 5000,
                         position = 'center-right'
                     })
                 end
             end
         else
-            -- Prompt Alert
-            -- Open Menu
+            local playerName = qbGetPlayerName()
+            local alert = lib.alertDialog({
+                header = locale('info.alert_dialog_header'),
+                content = locale('info.alert_dialog_description'):format(playerName),
+                centered = true,
+                cancel = true,
+                size = 'sm',
+                labels = {
+                    confirm = locale('info.alert_dialog_confirm_label'),
+                }
+            })
+            if alert == 'confirm' then
+                -- Open Menu
+            else
+                lib.notify({
+                    title = locale('error.alert_dialog_cancelled_title'),
+                    description = locale('error.alert_dialog_cancelled_description'),
+                    duration = 5000,
+                    position = 'center-right',
+                    type = 'error'
+                })
+            end
         end
     end
 
