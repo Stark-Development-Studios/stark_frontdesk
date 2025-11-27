@@ -6,6 +6,168 @@ if Config.Framework == 'qb' then
     local QBCore = exports['qb-core']:GetCoreObject()
 
     -- Functions
+    local function createPoliceMenu()
+        if Config.Menu == 'qb' then
+            local policeMenu = {
+                {
+                    header = locale('info.police_menu_header'),
+                    icon = 'fa-solid fa-shield-halved',
+                    isMenuHeader = true
+                },
+                { -- 1
+                    header = locale('info.police_request_assistance_header'),
+                    txt = locale('info.police_request_assistance_description'),
+                    icon = 'fa-solid fa-user-shield',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                { -- 2
+                    header = locale('info.police_request_license_header'),
+                    txt = locale('info.police_request_license_description'),
+                    icon = 'fa-solid fa-gun',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                { -- 3
+                    header = locale('info.police_request_job_information_header'),
+                    txt = locale('info.police_request_job_information_description'),
+                    icon = 'fa-solid fa-briefcase',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                {
+                    header = locale('info.police_close_menu_header'),
+                    txt = locale('info.police_close_menu_description'),
+                    icon = 'fa-solid fa-right-from-bracket',
+                    action = function()
+                        exports['qb-menu']:closeMenu()
+                        QBCore.Functions.Notify(locale('error.police_menu_closed_description'), 'error', 5000)
+                    end
+                }
+            }
+
+            exports['qb-menu']:openMenu(policeMenu)
+        elseif Config.Menu == 'ox' then
+            local menuOptions = {
+                {
+                    title = locale('info.police_request_assistance_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-user-shield',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.police_request_assistance_description'),
+                    event = ''
+                },
+                {
+                    title = locale('info.police_request_license_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-gun',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.police_request_license_description'),
+                    event = ''
+                },
+                {
+                    title = locale('info.police_request_job_information_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-briefcase',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.police_request_job_information_description'),
+                    event = ''
+                }
+            }
+
+            lib.registerContext({
+                id = 'open_police_desk_menu',
+                title = locale('info.police_menu_header'),
+                canClose = true,
+                onExit = function()
+                    lib.notify({
+                        title = locale('error.police_menu_closed_title'),
+                        description = locale('error.police_menu_closed_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end,
+                options = menuOptions
+            })
+
+            lib.showContext('open_police_desk_menu')
+        elseif Config.Menu == 'lation' then
+            local lation_ui = exports.lation_ui
+            local menuOptions = {
+                {
+                    title = locale('info.police_request_assistance_header'),
+                    icon = 'fa-solid fa-user-shield',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.police_request_assistance_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                },
+                {
+                    title = locale('info.police_request_license_header'),
+                    icon = 'fa-solid fa-gun',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.police_request_license_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                },
+                {
+                    title = locale('info.police_request_job_information_header'),
+                    icon = 'fa-solid fa-briefcase',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.police_request_job_information_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                }
+            }
+
+            lation_ui:registerMenu({
+                id = 'open_police_desk_menu',
+                title = locale('info.police_menu_header'),
+                canClose = true,
+                position = 'offcenter-right',
+                onExit = function()
+                    lation_ui:notify({
+                        title = locale('error.police_menu_closed_title'),
+                        message = locale('error.police_menu_closed_description'),
+                        type = 'error',
+                        duration = 5000,
+                        position = 'center-right'
+                    })
+                end,
+                options = menuOptions
+            })
+
+            lation_ui:showMenu('open_police_desk_menu')
+        end
+    end
+
+    local function createAmbulanceMenu()
+        if Config.Menu == 'qb' then
+        elseif Config.Menu == 'ox' then
+        elseif Config.Menu == 'lation' then
+        end
+    end
+
+    local function createMechanicMenu()
+        if Config.Menu == 'qb' then
+        elseif Config.Menu == 'ox' then
+        elseif Config.Menu == 'lation' then
+        end
+    end
+
     local function policeFrontDeskProgress()
         if Config.Progress.enabled then
             if Config.Progress.style == 'qb' then
@@ -29,7 +191,7 @@ if Config.Framework == 'qb' then
                             }
                         })
                         if alert == 'confirm' then
-                            -- Open Menu
+                            TriggerEvent('stark_frontdesk:client:openPoliceMenu')
                         else
                             QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
                         end
@@ -61,7 +223,7 @@ if Config.Framework == 'qb' then
                         }
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openPoliceMenu')
                     else
                         lib.notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -106,7 +268,7 @@ if Config.Framework == 'qb' then
                         }
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openPoliceMenu')
                     else
                         lib.notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -133,7 +295,6 @@ if Config.Framework == 'qb' then
                         icon = 'fa-solid fa-bell-concierge',
                         iconColor = '#FFFFFF',
                         color = '#FF0000',
-                        -- steps = {}, -- FEATURE COMING SOON
                         canCancel = true,
                         useWhileDead = false,
                         disable = {
@@ -158,7 +319,7 @@ if Config.Framework == 'qb' then
                         cancel = true
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openPoliceMenu')
                     else
                         lation_ui:notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -191,7 +352,7 @@ if Config.Framework == 'qb' then
                 }
             })
             if alert == 'confirm' then
-                -- Open Menu
+                TriggerEvent('stark_frontdesk:client:openPoliceMenu')
             else
                 lib.notify({
                     title = locale('error.alert_dialog_cancelled_title'),
@@ -824,6 +985,11 @@ if Config.Framework == 'qb' then
     RegisterNetEvent('stark_frontdesk:client:mechanicProgress', function()
         if not GetInvokingResource() then return end
         mechanicFrontDeskProgress()
+    end)
+
+    RegisterNetEvent('stark_frontdesk:client:openPoliceMenu', function()
+        if not GetInvokingResource() then return end
+        createPoliceMenu()
     end)
 
     -- Event Handlers

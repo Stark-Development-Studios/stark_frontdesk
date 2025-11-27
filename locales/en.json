@@ -5,13 +5,24 @@
         "progress_label": "Ringing The Bell...",
         "alert_dialog_header": "Receptionist",
         "alert_dialog_description": "Hello, %s! How Can We Help You?",
-        "alert_dialog_confirm_label": "Go To Menu"
+        "alert_dialog_confirm_label": "Go To Menu",
+        "police_menu_header": "Police Front Desk Menu",
+        "police_request_assistance_header": "Request Non-Emergency Assistance",
+        "police_request_assistance_description": "Requests Non-Emergency Assistance From Law Enforcement",
+        "police_request_license_header": "Request A Weapon License",
+        "police_request_license_description": "Requests A Weapon License From Law Enforcement",
+        "police_request_job_information_header": "Request Job Information or a Job Interview",
+        "police_request_job_information_description": "Requests Job Information or a Job Interview From Law Enforcement",
+        "police_close_menu_header": "Close The Police Front Desk Menu",
+        "police_close_menu_description": "Closes The Police Front Desk Menu"
     },
 
     "error": {
         "progress_cancelled_title": "Front Desk",
         "progress_cancelled_description": "You Stopped Ringing The Bell!",
         "alert_dialog_cancelled_title": "Receptionist",
-        "alert_dialog_cancelled_description": "Thank You For Stopping By!"
+        "alert_dialog_cancelled_description": "Thank You For Stopping By!",
+        "police_menu_closed_title": "Receptionist",
+        "police_menu_closed_description": "Thank You For Stopping By!"
     }
 }
