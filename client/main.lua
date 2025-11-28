@@ -304,8 +304,176 @@ if Config.Framework == 'qb' then
 
     local function createMechanicMenu()
         if Config.Menu == 'qb' then
+            local mechanicMenu = {
+                {
+                    header = locale('info.mechanic_menu_header'),
+                    icon = 'fa-solid fa-car-battery',
+                    isMenuHeader = true
+                },
+                {
+                    header = locale('info.mechanic_request_assistance_header'),
+                    txt = locale('info.mechanic_request_assistance_description'),
+                    icon = 'fa-solid fa-user-gear',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                {
+                    header = locale('info.mechanic_request_repair_kit_header'),
+                    txt = locale('info.mechanic_request_repair_kit_description'),
+                    icon = 'fa-solid fa-toolbox',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                {
+                    header = locale('info.mechanic_request_repair_upgrade_header'),
+                    txt = locale('info.mechanic_request_repair_upgrade_description'),
+                    icon = 'fa-solid fa-screwdriver-wrench',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                {
+                    header = locale('info.mechanic_request_job_information_header'),
+                    txt = locale('info.mechanic_request_job_information_description'),
+                    icon = 'fa-solid fa-briefcase',
+                    action = function() end,
+                    params = {
+                        event = ''
+                    }
+                },
+                {
+                    header = locale('info.mechanic_close_menu_header'),
+                    txt = locale('info.mechanic_close_menu_description'),
+                    icon = 'fa-solid fa-right-from-bracket',
+                    action = function()
+                        exports['qb-menu']:closeMenu()
+                        QBCore.Functions.Notify(locale('error.mechanic_menu_closed_description'), 'error', 5000)
+                    end
+                }
+            }
+
+            exports['qb-menu']:openMenu(mechanicMenu)
         elseif Config.Menu == 'ox' then
+            local menuOptions = {
+                {
+                    title = locale('info.mechanic_request_assistance_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-user-gear',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.mechanic_request_assistance_description'),
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_repair_kit_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-toolbox',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.mechanic_request_repair_kit_description'),
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_repair_upgrade_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-screwdriver-wrench',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.mechanic_request_repair_upgrade_description'),
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_job_information_header'),
+                    onSelect = function() end,
+                    icon = 'fa-solid fa-briefcase',
+                    iconColor = 'white',
+                    arrow = true,
+                    description = locale('info.mechanic_request_job_information_description'),
+                    event = ''
+                }
+            }
+
+            lib.registerContext({
+                id = 'open_mechanic_desk_menu',
+                title = locale('info.mechanic_menu_header'),
+                canClose = true,
+                onExit = function()
+                    lib.notify({
+                        title = locale('error.mechanic_menu_closed_title'),
+                        description = locale('error.mechanic_menu_closed_description'),
+                        duration = 5000,
+                        position = 'center-right',
+                        type = 'error'
+                    })
+                end,
+                options = menuOptions
+            })
+
+            lib.showContext('open_mechanic_desk_menu')
         elseif Config.Menu == 'lation' then
+            local lation_ui = exports.lation_ui
+            local menuOptions = {
+                {
+                    title = locale('info.mechanic_request_assistance_header'),
+                    icon = 'fa-solid fa-user-gear',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.mechanic_request_assistance_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_repair_kit_header'),
+                    icon = 'fa-solid fa-toolbox',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.mechanic_request_repair_kit_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_repair_upgrade_header'),
+                    icon = 'fa-solid fa-screwdriver-wrench',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.mechanic_request_repair_upgrade_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                },
+                {
+                    title = locale('info.mechanic_request_job_information_header'),
+                    icon = 'fa-solid fa-briefcase',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.mechanic_request_job_information_description'),
+                    arrow = true,
+                    onSelect = function() end,
+                    event = ''
+                }
+            }
+
+            lation_ui:registerMenu({
+                id = 'open_mechanic_desk_menu',
+                title = locale('info.mechanic_menu_header'),
+                canClose = true,
+                position = 'offcenter-right',
+                onExit = function()
+                    lation_ui:notify({
+                        title = locale('error.mechanic_menu_closed_title'),
+                        message = locale('error.mechanic_menu_closed_description'),
+                        type = 'error',
+                        duration = 5000,
+                        position = 'center-right'
+                    })
+                end,
+                options = menuOptions
+            })
+
+            lation_ui:showMenu('open_mechanic_desk_menu')
         end
     end
 
@@ -726,7 +894,7 @@ if Config.Framework == 'qb' then
                             }
                         })
                         if alert == 'confirm' then
-                            -- Open Menu
+                            TriggerEvent('stark_frontdesk:client:openMechanicMenu')
                         else
                             QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
                         end
@@ -758,7 +926,7 @@ if Config.Framework == 'qb' then
                         }
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openMechanicMenu')
                     else
                         lib.notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -803,7 +971,7 @@ if Config.Framework == 'qb' then
                         }
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openMechanicMenu')
                     else
                         lib.notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -830,7 +998,6 @@ if Config.Framework == 'qb' then
                         icon = 'fa-solid fa-bell-concierge',
                         iconColor = '#FFFFFF',
                         color = '#FF0000',
-                        -- steps = {}, -- FEATURE COMING SOON
                         canCancel = true,
                         useWhileDead = false,
                         disable = {
@@ -855,7 +1022,7 @@ if Config.Framework == 'qb' then
                         cancel = true
                     })
                     if alert == 'confirm' then
-                        -- Open Menu
+                        TriggerEvent('stark_frontdesk:client:openMechanicMenu')
                     else
                         lation_ui:notify({
                             title = locale('error.alert_dialog_cancelled_title'),
@@ -888,7 +1055,7 @@ if Config.Framework == 'qb' then
                 }
             })
             if alert == 'confirm' then
-                -- Open Menu
+                TriggerEvent('stark_frontdesk:client:openMechanicMenu')
             else
                 lib.notify({
                     title = locale('error.alert_dialog_cancelled_title'),
@@ -1135,6 +1302,11 @@ if Config.Framework == 'qb' then
     RegisterNetEvent('stark_frontdesk:client:openAmbulanceMenu', function()
         if not GetInvokingResource() then return end
         createAmbulanceMenu()
+    end)
+
+    RegisterNetEvent('stark_frontdesk:client:openMechanicMenu', function()
+        if not GetInvokingResource() then return end
+        createMechanicMenu()
     end)
 
     -- Event Handlers

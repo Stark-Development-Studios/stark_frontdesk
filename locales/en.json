@@ -23,7 +23,18 @@
         "ambulance_request_job_information_header": "Request Job Information or a Job Interview",
         "ambulance_request_job_information_description": "Requests Job Information or a Job Interview From EMS",
         "ambulance_close_menu_header": "Close The Hospital Front Desk Menu",
-        "ambulance_close_menu_description": "Closes The Hospital Front Desk Menu"
+        "ambulance_close_menu_description": "Closes The Hospital Front Desk Menu",
+        "mechanic_menu_header": "Mechanic Front Desk Menu",
+        "mechanic_request_assistance_header": "Request Mechanic Assistance",
+        "mechanic_request_assistance_description": "Requests Assistance From A Mechanic",
+        "mechanic_request_repair_kit_header": "Request A Repair Kit",
+        "mechanic_request_repair_kit_description": "Requests Repair Kits From A Mechanic",
+        "mechanic_request_repair_upgrade_header": "Request A Vehicle Repair or Vehicle Upgrades",
+        "mechanic_request_repair_upgrade_description": "Requests Either A Vehicle Repair or Vehicle Upgrades From A Mechanic",
+        "mechanic_request_job_information_header": "Request Job Information or a Job Interview",
+        "mechanic_request_job_information_description": "Requests Job Information or a Job Interview From A Mechanic",
+        "mechanic_close_menu_header": "Close The Mechanic Front Desk Menu",
+        "mechanic_close_menu_description": "Closes The Mechanic Front Desk Menu"
     },
 
     "error": {
@@ -34,6 +45,8 @@
         "police_menu_closed_title": "Receptionist",
         "police_menu_closed_description": "Thank You For Stopping By!",
         "ambulance_menu_closed_title": "Receptionist",
-        "ambulance_menu_closed_description": "Thank You For Stopping By!"
+        "ambulance_menu_closed_description": "Thank You For Stopping By!",
+        "mechanic_menu_closed_title": "Receptionist",
+        "mechanic_menu_closed_description": "Thank You For Stopping By!"
     }
 }
