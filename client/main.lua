@@ -735,7 +735,7 @@ if Config.Framework == 'qb' then
                         disableCarMovement = true,
                         disableMouse = false,
                         disableCombat = true
-                    }, {}, {}, {}, function() -- Progress Completed
+                    }, {}, {}, {}, function()
                         local playerName = qbGetPlayerName()
                         local alert = lib.alertDialog({
                             header = locale('info.alert_dialog_header'),
@@ -752,7 +752,7 @@ if Config.Framework == 'qb' then
                         else
                             QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
                         end
-                    end, function() -- Progress Cancelled
+                    end, function()
                         QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
                     end)
             elseif Config.Progress.style == 'ox_bar' then
@@ -932,7 +932,7 @@ if Config.Framework == 'qb' then
                         disableCarMovement = true,
                         disableMouse = false,
                         disableCombat = true
-                    }, {}, {}, {}, function() -- Progress Completed
+                    }, {}, {}, {}, function()
                         local playerName = qbGetPlayerName()
                         local alert = lib.alertDialog({
                             header = locale('info.alert_dialog_header'),
@@ -949,7 +949,7 @@ if Config.Framework == 'qb' then
                         else
                             QBCore.Functions.Notify(locale('error.alert_dialog_cancelled_description'), 'error', 5000)
                         end
-                    end, function() -- Progress Cancelled
+                    end, function()
                         QBCore.Functions.Notify(locale('error.progress_cancelled_description'), 'error', 5000)
                     end)
             elseif Config.Progress.style == 'ox_bar' then
