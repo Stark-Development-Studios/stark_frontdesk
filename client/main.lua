@@ -138,7 +138,14 @@ if Config.Framework == 'qb' then
                     description = locale('info.police_close_menu_description'),
                     arrow = true,
                     onSelect = function()
-                        exports.lation_ui:hideMenu()
+                        lation_ui:hideMenu()
+                        lation_ui:notify({
+                            title = locale('error.police_menu_closed_title'),
+                            message = locale('error.police_menu_closed_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
                     end
                 }
             }
@@ -296,7 +303,14 @@ if Config.Framework == 'qb' then
                     description = locale('info.ambulance_close_menu_description'),
                     arrow = true,
                     onSelect = function()
-                        exports.lation_ui:hideMenu()
+                        lation_ui:hideMenu()
+                        lation_ui:notify({
+                            title = locale('error.ambulance_menu_closed_title'),
+                            message = locale('error.ambulance_menu_closed_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
                     end
                 }
             }
@@ -481,7 +495,14 @@ if Config.Framework == 'qb' then
                     description = locale('info.mechanic_close_menu_description'),
                     arrow = true,
                     onSelect = function()
-                        exports.lation_ui:hideMenu()
+                        lation_ui:hideMenu()
+                        lation_ui:notify({
+                            title = locale('error.mechanic_menu_closed_title'),
+                            message = locale('error.mechanic_menu_closed_description'),
+                            type = 'error',
+                            duration = 5000,
+                            position = 'center-right'
+                        })
                     end
                 }
             }
