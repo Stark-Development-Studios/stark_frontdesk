@@ -130,6 +130,16 @@ if Config.Framework == 'qb' then
                     arrow = true,
                     onSelect = function() end,
                     event = ''
+                },
+                {
+                    title = locale('info.police_close_menu_header'),
+                    icon = 'fa-solid fa-right-from-bracket',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.police_close_menu_description'),
+                    arrow = true,
+                    onSelect = function()
+                        exports.lation_ui:hideMenu()
+                    end
                 }
             }
 
@@ -278,6 +288,16 @@ if Config.Framework == 'qb' then
                     arrow = true,
                     onSelect = function() end,
                     event = ''
+                },
+                {
+                    title = locale('info.ambulance_close_menu_header'),
+                    icon = 'fa-solid fa-right-from-bracket',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.ambulance_close_menu_description'),
+                    arrow = true,
+                    onSelect = function()
+                        exports.lation_ui:hideMenu()
+                    end
                 }
             }
 
@@ -453,6 +473,16 @@ if Config.Framework == 'qb' then
                     arrow = true,
                     onSelect = function() end,
                     event = ''
+                },
+                {
+                    title = locale('info.mechanic_close_menu_header'),
+                    icon = 'fa-solid fa-right-from-bracket',
+                    iconColor = '#FFFFFF',
+                    description = locale('info.mechanic_close_menu_description'),
+                    arrow = true,
+                    onSelect = function()
+                        exports.lation_ui:hideMenu()
+                    end
                 }
             }
 
