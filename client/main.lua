@@ -6,6 +6,14 @@ if Config.Framework == 'qb' then
     local QBCore = exports['qb-core']:GetCoreObject()
 
     -- Functions
+
+    -- Police Notification Functions
+    -- Ambulance Notification Functions
+    -- Mechanic Notifications Functions
+
+    -- Police Dispatch Functions
+    -- Ambulance Dispatch Functions
+
     local function createPoliceMenu()
         if Config.Menu == 'qb' then
             local policeMenu = {
