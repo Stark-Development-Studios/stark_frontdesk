@@ -48,5 +48,10 @@
         "ambulance_menu_closed_description": "Thank You For Stopping By!",
         "mechanic_menu_closed_title": "Receptionist",
         "mechanic_menu_closed_description": "Thank You For Stopping By!"
+    },
+
+    "notify": {
+        "police_request_assistance_title": "Non-Emergency Assistance Requested",
+        "police_request_assistance_message": "A Civilian Has Requested Non-Emergency Police Assistance!"
     }
 }

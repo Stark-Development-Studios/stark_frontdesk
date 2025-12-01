@@ -8,6 +8,34 @@ if Config.Framework == 'qb' then
     -- Functions
 
     -- Police Notification Functions
+    local function policeRequestAssistance()
+        if Config.Notify.enabled then
+            if Config.Notify.style == 'qb' then
+                QBCore.Functions.Notify(locale('notify.police_request_assistance_message'), 'primary', Config.Notify.duration)
+            elseif Config.Notify.style == 'ox' then
+                lib.notify({
+                    title = locale('notify.police_request_assistance_title'),
+                    description = locale('notify.police_request_assistance_message'),
+                    duration = Config.Notify.duration,
+                    position = 'top',
+                    type = 'inform',
+                    icon = 'fa-solid fa-shield-halved',
+                })
+            elseif Config.Notify.style == 'lation' then
+                local lation_ui = exports.lation_ui
+                lation_ui:notify({
+                    title = locale('notify.police_request_assistance_title'),
+                    message = locale('notify.police_request_assistance_message'),
+                    type = 'info',
+                    duration = Config.Notify.duration,
+                    position = 'top',
+                    icon = 'fa-solid fa-shield-halved'
+                })
+            end
+        end
+    end
+
+    policeRequestAssistance()
     -- Ambulance Notification Functions
     -- Mechanic Notifications Functions
 
