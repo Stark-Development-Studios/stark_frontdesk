@@ -1,3 +1,13 @@
+# Disclaimer
+This script is a WIP. It is not currently complete.
+
+## To-Do
+1. Finish Police Notification Functions
+2. Ambulance Notification Functions
+3. Mechanic Notification Functions
+4. Police & Ambulance Dispatch Alerts
+5. Implement Logic For Only Specified Jobs To Receive The Notifications
+
 # Acknowledgements
 
 ## QBCore
